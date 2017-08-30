@@ -28,11 +28,17 @@
             td {{ patient.name }}
             td {{ patient.phone }}
 
+    newPatientModal(ref="newPatientModal")
+
 </template>
 
 <script>
+  import newPatientModal from './modal/newPatientModal'
   export default {
     name: 'SearchPatient',
+    components: {
+      newPatientModal
+    },
     data () {
       return {
         loading: false,
@@ -56,7 +62,7 @@
         this.$router.push({ name: 'Patient', params: { hn: patientHN } })
       },
       createNewPatient () {
-        console.log('createNewPatient')
+        this.$router.push({ name: 'PatientCreate' })
       }
     }
   }

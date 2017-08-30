@@ -6,6 +6,7 @@ import Home from '../components/Home'
 
 import SearchPatient from '../components/SearchPatient'
 import PatientLayout from '../components/PatientLayout'
+import PatientCreate from '../components/PatientCreate'
 
 import Patient from '../components/patientRecord/Patient'
 import PatientPre from '../components/patientRecord/PatientPre'
@@ -25,6 +26,7 @@ export default new Router({
       children: [
         { path: '/Home', name: 'Home', component: Home },
         { path: '/SearchPatient', name: 'SearchPatient', component: SearchPatient },
+        { path: '/PatientCreate', name: 'PatientCreate', component: PatientCreate },
         { path: '/patientRecord',
           component: PatientLayout,
           children: [
