@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'newPatient',
+    name: 'newPatientModal',
     methods: {
       show (callback) {
         console.log(this.$el)

@@ -6,5 +6,5 @@
       router-link.item(:to="{ name: 'SearchPatient' }")
         | Patients
       .right.menu
-        a.item(@click="signOut") Sign Out
+        a.item Sign Out
 </template>

@@ -21,14 +21,14 @@
           opd: 'OPD',
           phone: '0971249197',
           // ---------  Appointment --------------
-          type: 'Elective case',
-          date: '28/5/2017',
-          time: 'Morning',
+          type: 'ergency',
+          date: '',
+          time: 'morning',
           // ---------  Pre Diagnosis --------------
           diagnose: 'Pre_od',
           plan: 'plan',
           underlying: 'underlying',
-          specialTreatment: 'treatment',
+          treatment: 'treatment',
           note: 'note',
           // -------- personal health record -----------
           premed: '',
@@ -66,6 +66,8 @@
       create () {
         console.log('create')
       }
+    },
+    mounted () {
     }
   }
 </script>

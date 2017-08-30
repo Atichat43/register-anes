@@ -2,6 +2,7 @@
   .ui.container
     .ui.basic.segment
       .ui.teal.right.floated.button(:class="{'disabled': loading }", @click="createNewPatient") New Patient
+    .ui.hidden.divider
     h1.ui.center.aligned.header ค้นหาคนไข้
     .row
       .ui.fluid.input
@@ -11,7 +12,7 @@
     .ui.basic.segment
       .ui.active.inverted.dimmer(v-if="loading")
         .ui.huge.text.loader Loading
-      table.ui.very.basic.selectable.definitiontable.table
+      table.ui.very.basic.selectable.definitiontable.table(v-if="mockDB.patients !== null")
         thead
           tr
             th Pic

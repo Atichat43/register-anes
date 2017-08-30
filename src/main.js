@@ -4,10 +4,11 @@ import router from './router'
 import firebase from 'firebase'
 import VueMask from 'v-mask'
 import VeeValidate from 'vee-validate'
-
+const moment = require('moment')
 Vue.config.productionTip = false
 Vue.use(VueMask)
 Vue.use(VeeValidate)
+Vue.use(require('vue-moment'), {moment})
 
 firebase.initializeApp({
   apiKey: 'AIzaSyBBqyPw0p6gmq7T8rXVhCWjKbF6bJaTPEU',
