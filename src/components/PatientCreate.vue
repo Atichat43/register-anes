@@ -1,6 +1,5 @@
 <template lang="pug">
   .ui.basic.segment
-    h6 Patient create layout
     patient-create-form(:patient="patient")
     .ui.hidden.divider
 </template>

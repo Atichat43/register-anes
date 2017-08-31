@@ -13,12 +13,55 @@
       .actions
         .ui.button Cancel
         .ui.button OK
+    label(v-for="patient in patients") {{ patient }}
+    download-excel(class="btn btn-default", :data="json_data", :fields="json_fields", name="testDatabase.xls")
 </template>
 
 <script>
+  import { Patient } from '../services'
   export default {
+    created () {
+      Patient.list((list) => { this.patients = list })
+    },
     mounted () {
-      $('.ui.modal').modal('show')
+      $('.ui.modal').modal('hide')
+    },
+    computed: {
+//      list () {
+//        return this.patients.map((patient) => {
+//          return {
+//            ...patient
+//          }
+//        })
+//      }
+    },
+    data () {
+      return {
+        patients: [],
+        json_fields: {
+          name: 'String',
+          city: 'String',
+          country: 'String',
+          birthdate: 'String',
+          amount: 'Number'
+        },
+        json_data: [
+          {
+            name: 'Tony Peña',
+            city: 'New York',
+            country: 'United States',
+            birthdate: '1978-03-15',
+            amount: 42
+          },
+          {
+            name: 'Thessaloniki',
+            city: 'Athens',
+            country: 'Greece',
+            birthdate: '1987-11-23',
+            amount: 42
+          }
+        ]
+      }
     }
   }
 </script>
