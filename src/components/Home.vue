@@ -13,16 +13,11 @@
       .actions
         .ui.button Cancel
         .ui.button OK
-    label(v-for="patient in patients") {{ patient }}
-    download-excel(class="btn btn-default", :data="json_data", :fields="json_fields", name="testDatabase.xls")
+    // download-excel(class="btn btn-default", :data="json_data", :fields="json_fields", name="testDatabase.xls")
 </template>
 
 <script>
-  import { Patient } from '../services'
   export default {
-    created () {
-      Patient.list((list) => { this.patients = list })
-    },
     mounted () {
       $('.ui.modal').modal('hide')
     },

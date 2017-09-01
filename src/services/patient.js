@@ -13,8 +13,9 @@ const list = (callback) => {
     .on('value', (snapshots) => {
       const result = []
       snapshots.forEach((snapshot) => {
-        console.log(snapshot)
-        result.push(snapshot)
+        const patient = snapshot.val()
+        patient.hn = snapshot.key
+        result.push(patient)
       })
       callback(result)
     })
