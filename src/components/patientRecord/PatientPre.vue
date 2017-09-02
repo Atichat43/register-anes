@@ -2,7 +2,7 @@
   .ui.basic.segment
     i.large.write.link.icon(@click="editMode", style="float:right;")
     .ui.container
-      h3.ui.header Pre planning by Doctor
+      h3.ui.header Pre Planning by Doctor
       table.ui.definition.fixed.single.line.table
         tbody
           tr
@@ -20,6 +20,75 @@
           tr
             td Note
             td {{ patient.preRecord.note }}
+
+
+      h3.ui.header ICU Record
+      table.ui.definition.fixed.single.line.table
+        tbody
+          tr
+            td(class="five wide") Service Record
+            td {{ patient.preRecord.icu }}
+          tr
+            td Bed Number
+            td {{ patient.preRecord.bedNumber }}
+          tr
+            td Service
+            td {{ patient.preRecord.service }}
+          tr
+            td ASA
+            td {{ patient.preRecord.asa }}
+
+      h3.ui.header Personal Health Record
+      table.ui.definition.fixed.single.line.table
+        tbody
+          tr
+            td(class="five wide") Premed
+            td {{ patient.preRecord.premed }}
+          tr
+            td PRC
+            td {{ patient.preRecord.prc }}
+          tr
+            td FFP
+            td {{ patient.preRecord.ffp }}
+          tr
+            td PLT
+            td {{ patient.preRecord.plt }}
+          tr
+            td PC
+            td {{ patient.preRecord.pc }}
+          tr
+            td Weight
+            td {{ patient.preRecord.weight }}
+          tr
+            td Height
+            td {{ patient.preRecord.height }}
+          tr
+            td Blood Pressure
+            td {{ patient.preRecord.bloodPressure }}
+          tr
+            td P
+            td {{ patient.preRecord.p }}
+          tr
+            td RR
+            td {{ patient.preRecord.rr }}
+          tr
+            td T
+            td {{ patient.preRecord.t }}
+          tr
+            td GSC
+            td {{ patient.preRecord.gsc }}
+          tr
+            td Smoking
+            td {{ patient.preRecord.smoking }}
+          tr
+            td Alcoholic
+            td {{ patient.preRecord.alcoholic }}
+          tr(rowspan="2")
+            td Allergy
+            td
+              label(v-for=" allergy in patient.preRecord.allergy") {{ allergy.medName }} &nbsp;
+
+
 </template>
 
 <script>
@@ -52,7 +121,7 @@
             specialTreatment: 'treatment',
             note: 'note',
             // -------- personal health record -----------
-            premed: '',
+            premed: 'premed',
             prc: 50,
             ffp: 50,
             plt: 50,
@@ -162,6 +231,11 @@
             }
           }
         }
+      }
+    },
+    methods: {
+      editMode () {
+        this.$router.push({ name: 'PatientPreEdit' })
       }
     }
   }

@@ -51,8 +51,6 @@
   Patient
   export default {
     name: 'SearchPatient',
-    components: {
-    },
     created () {
       // Patient.list((list) => { this.patients = list })
     },
