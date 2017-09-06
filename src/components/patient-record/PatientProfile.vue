@@ -2,98 +2,22 @@
   .ui.basic.segment
     i.large.write.link.icon(@click="editMode", style="float:right;")
     .ui.container
-      h3.ui.header Pre Planning by Doctor
-      table.ui.definition.fixed.single.line.table
-        tbody
-          tr
-            td(class="five wide") Pre Operation Diagnosis
-            td {{ patient.preRecord.diagnose }}
-          tr
-            td Operation Plan
-            td {{ patient.preRecord.plan }}
-          tr
-            td Underlying
-            td {{ patient.preRecord.underlying }}
-          tr
-            td Special Treatment
-            td {{ patient.preRecord.specialTreatment }}
-          tr
-            td Note
-            td {{ patient.preRecord.note }}
-
-
-      h3.ui.header ICU Record
-      table.ui.definition.fixed.single.line.table
-        tbody
-          tr
-            td(class="five wide") Service Record
-            td {{ patient.preRecord.icu }}
-          tr
-            td Bed Number
-            td {{ patient.preRecord.bedNumber }}
-          tr
-            td Service
-            td {{ patient.preRecord.service }}
-          tr
-            td ASA
-            td {{ patient.preRecord.asa }}
-
-      h3.ui.header Personal Health Record
-      table.ui.definition.fixed.single.line.table
-        tbody
-          tr
-            td(class="five wide") Premed
-            td {{ patient.preRecord.premed }}
-          tr
-            td PRC
-            td {{ patient.preRecord.prc }}
-          tr
-            td FFP
-            td {{ patient.preRecord.ffp }}
-          tr
-            td PLT
-            td {{ patient.preRecord.plt }}
-          tr
-            td PC
-            td {{ patient.preRecord.pc }}
-          tr
-            td Weight
-            td {{ patient.preRecord.weight }}
-          tr
-            td Height
-            td {{ patient.preRecord.height }}
-          tr
-            td Blood Pressure
-            td {{ patient.preRecord.bloodPressure }}
-          tr
-            td P
-            td {{ patient.preRecord.p }}
-          tr
-            td RR
-            td {{ patient.preRecord.rr }}
-          tr
-            td T
-            td {{ patient.preRecord.t }}
-          tr
-            td GSC
-            td {{ patient.preRecord.gsc }}
-          tr
-            td Smoking
-            td {{ patient.preRecord.smoking }}
-          tr
-            td Alcoholic
-            td {{ patient.preRecord.alcoholic }}
-          tr(rowspan="2")
-            td Allergy
-            td
-              label(v-for=" allergy in patient.preRecord.allergy") {{ allergy.medName }} &nbsp;
-
-
+      .ui.relaxed.divided.items
+        .item
+          .ui.small.image
+            img(src="../../assets/logo.png")
+          .ui.content
+            .header Name: {{ patient.firstName }} {{ patient.lastName }}
+            .meta CASE NO: {{ patient.caseNumber }}
+            .description HN: {{ patient.hn }}
+            .description AN: {{ patient.an }}
+            .description Phone: {{ patient.preRecord.phone }}
+            .description Age: {{ patient.preRecord.age }}
 </template>
 
 <script>
   export default {
-    name: 'PatientPre',
+    name: 'PaitentProfile',
     data () {
       return {
         patient: {
@@ -121,7 +45,7 @@
             specialTreatment: 'treatment',
             note: 'note',
             // -------- personal health record -----------
-            premed: 'premed',
+            premed: '',
             prc: 50,
             ffp: 50,
             plt: 50,
@@ -235,7 +159,7 @@
     },
     methods: {
       editMode () {
-        this.$router.push({ name: 'PatientPreEdit' })
+        console.log('editMode')
       }
     }
   }

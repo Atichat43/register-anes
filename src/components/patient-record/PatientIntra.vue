@@ -160,6 +160,11 @@
           }
         }
       }
+    },
+    methods: {
+      editMode () {
+        console.log('editMode')
+      }
     }
   }
 </script>

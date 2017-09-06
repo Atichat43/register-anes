@@ -2,19 +2,20 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Layout from '../components/Layout'
+
 import Home from '../components/Home'
-
-import SearchPatient from '../components/SearchPatient'
-import PatientLayout from '../components/PatientLayout'
 import PatientCreate from '../components/PatientCreate'
+import SearchPatient from '../components/SearchPatient'
+import PatientRecordLayout from '../components/PatientRecordLayout'
+import PatientCreateLayout from '../components/PatientRecordCreateLayout.vue'
+import PatientEditLayout from '../components/PatientRecordEditLayout'
 
-import Patient from '../components/patientRecord/Patient'
-import PatientPre from '../components/patientRecord/PatientPre'
-import PatientPreEdit from '../components/patientRecord/PatientPreEdit'
-import PatientIntra from '../components/patientRecord/PatientIntra'
-import PatientIntraEdit from '../components/patientRecord/PatientIntraEdit'
-import PatientPost from '../components/patientRecord/PatientPost'
-import PatientPostEdit from '../components/patientRecord/PatientPostEdit'
+import PatientProfile from '../components/patient-record/PatientProfile'
+import PatientPre from '../components/patient-record/PatientPre'
+import PatientIntra from '../components/patient-record/PatientIntra'
+import PatientPost from '../components/patient-record/PatientPost'
+
+import CreatePhysicalInfo from '../components/patient-record/pre-sub-record/CreatePhysicalInfo'
 Vue.use(Router)
 
 export default new Router({
@@ -24,20 +25,28 @@ export default new Router({
     { path: '',
       component: Layout,
       children: [
-        { path: '/Home', name: 'Home', component: Home },
-        { path: '/SearchPatient', name: 'SearchPatient', component: SearchPatient },
-        { path: '/PatientCreate', name: 'PatientCreate', component: PatientCreate },
-        { path: '/patientRecord',
-          component: PatientLayout,
+        { path: '/home', name: 'Home', component: Home },
+        { path: '/searchPatient', name: 'SearchPatient', component: SearchPatient },
+        { path: '/patientCreate', name: 'PatientCreate', component: PatientCreate },
+        { path: '/patient',
+          component: PatientRecordLayout,
           children: [
-            { path: ':hn', name: 'Patient', component: Patient, props: (to) => ({ hn: +to.params.hn }) },
+            { path: ':hn/profile', name: 'PatientProfile', component: PatientProfile, props: (to) => ({ hn: +to.params.hn }) },
             { path: ':hn/pre', name: 'PatientPre', component: PatientPre },
-            { path: ':hn/pre/edit', name: 'PatientPreEdit', component: PatientPreEdit },
             { path: ':hn/intra', name: 'PatientIntra', component: PatientIntra },
-            { path: ':hn/intra/edit', name: 'PatientIntraEdit', component: PatientIntraEdit },
-            { path: ':hn/post', name: 'PatientPost', component: PatientPost },
-            { path: ':hn/post/edit', name: 'PatientPostEdit', component: PatientPostEdit }
+            { path: ':hn/post', name: 'PatientPost', component: PatientPost }
           ]
+        },
+        { path: '/patient',
+          component: PatientCreateLayout,
+          children: [
+            { path: ':hn/create/physicalInfo/step/:no', name: 'CreatePhysicalInfo', component: CreatePhysicalInfo, props: (to) => ({ hn: +to.params.hn, no: to.params.no }) }
+          ]
+        },
+        {
+          path: '/patient/edit',
+          component: PatientEditLayout,
+          children: []
         }
       ]
     }

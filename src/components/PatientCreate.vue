@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import patientCreateForm from '../components/patientCreateForm'
+  import patientCreateForm from './form/PatientCreateForm'
   export default {
     name: 'patientCreate',
     data () {

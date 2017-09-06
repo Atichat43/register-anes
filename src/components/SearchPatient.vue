@@ -61,14 +61,12 @@
       return {
         loading: false,
         keywordSearch: 'hn',
-        valueSearch: ''
-//        mockDB: {
-//          patients: [
-//            { hn: 'HN00001', an: 'AN00002', firstName: 'Atichat', lastName: 'lastName' },
-//            { hn: 'HN00002', an: 'AN00002', firstName: 'Garce', lastName: 'lastName' },
-//            { hn: 'HN00003', an: 'AN00002', firstName: 'Damn', lastName: 'lastName' }
-//          ]
-//        }
+        valueSearch: '',
+        patients: [
+          { hn: 'HN00001', an: 'AN00002', firstName: 'Atichat', lastName: 'lastName' },
+          { hn: 'HN00002', an: 'AN00002', firstName: 'Garce', lastName: 'lastName' },
+          { hn: 'HN00003', an: 'AN00002', firstName: 'Damn', lastName: 'lastName' }
+        ]
       }
     },
     props: {
@@ -84,7 +82,7 @@
         console.log(this.valueSearch)
       },
       selectPatient (patientHN) {
-        this.$router.push({ name: 'Patient', params: { hn: patientHN } })
+        this.$router.push({ name: 'PatientProfile', params: { hn: patientHN } })
       },
       createNewPatient () {
         this.$router.push({ name: 'PatientCreate' })

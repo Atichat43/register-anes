@@ -67,7 +67,7 @@
 
 <script>
   import moment from 'moment'
-  import confirmCancel from '../components/modal/confirmCancel'
+  import confirmCancel from '../modal/confirmCancel'
   export default {
     name: 'patientCreateForm',
     components: {
