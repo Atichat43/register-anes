@@ -29,7 +29,8 @@
           laboratory: getConfig('laboratory'),
           investigation: getConfig('investigation'),
           discussion: getConfig('discussion'),
-          examination: getConfig('examination')
+          examination: getConfig('examination'),
+          examinationMore: getConfig('examinationMore')
         },
         patient: {
           // from parent page
@@ -53,7 +54,8 @@
             laboratory: null,
             investigation: null,
             discussion: null,
-            examination: null
+            examination: null,
+            examinationMore: null
           }
         }
       }

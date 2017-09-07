@@ -30,8 +30,11 @@ export const getConfig = (part) => ({
   'examination': {
     title: 'Examination',
     head: ['Physical examination', 'Airway assessment',
-      'Cardiovascular', 'Respiratory', 'Neuro/Muscular',
-      'Renal', 'Edocrine', 'Hermato', 'Gastrointestinal',
+      'Cardiovascular', 'Respiratory']
+  },
+  'examinationMore': {
+    title: 'Examination II',
+    head: [ 'Neuro/Muscular', 'Renal', 'Edocrine', 'Hermato', 'Gastrointestinal',
       'Psychological', 'Others']
   }
 }[part] || '')

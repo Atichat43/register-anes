@@ -1,12 +1,16 @@
 <template lang="pug">
   .container
-    .ui.center.aligned.header title
+    .ui.center.aligned.header {{ title }}
     .ui.indicating.progress(ref="progress")
       .bar
-    .ui.small.ordered.steps(ref="stepsRef", :class="numberString[steps.length]")
+    .ui.small.ordered.steps(v-if="steps.length <= 6", ref="stepsRef", :class="numberString[steps.length]")
       .step(v-for="(step, index) in steps", :class="getStepClass(index+1)", @click="backStep(index+1)")
         .content
-          .title {{ step.name }}
+          .title {{ step }}
+    .ui.small.fluid.vertical.ordered.steps(v-else, ref="stepsRef")
+      .step(v-for="(step, index) in steps", :class="getStepClass(index+1)", @click="backStep(index+1)")
+        .content
+          .title {{ step }}
     .ui.segment
       physical-info-form(v-if="part === 'physicalInfo'")
       information-form(v-else-if="part === 'information'")
@@ -15,6 +19,7 @@
       investigation-form(v-else-if="part === 'investigation'")
       discussion-form(v-else-if="part === 'discussion'")
       examination-form(v-else-if="part === 'examination'")
+      examination-more-form(v-else-if="part === 'examinationMore'")
       not-found(v-else)
     .ui.hidden.divider
       .ui.primary.right.floated.button(v-if="this.$route.params.no < steps.length", @click="nextStep") next
@@ -44,6 +49,7 @@
   import InvestigationForm from '../../form/pre/InvestigationForm'
   import DiscussionForm from '../../form/pre/DiscussionForm'
   import ExaminationForm from '../../form/pre/ExaminationForm'
+  import ExaminationMoreForm from '../../form/pre/ExaminationMoreForm'
   export default {
     name: 'CreatePreRecordLayout',
     components: {
@@ -53,10 +59,15 @@
       LaboratoryForm,
       InvestigationForm,
       DiscussionForm,
-      ExaminationForm
+      ExaminationForm,
+      ExaminationMoreForm
     },
     mounted () {
       console.log(getConfig('doctor'))
+      var temp = getConfig(this.$route.params.part)
+      this.title = temp.title
+      this.steps = temp.head
+      this.steps.push('confirm')
       $(this.$refs.progress).progress({
         value: 1,
         total: this.steps.length
@@ -71,17 +82,10 @@
       return {
         part: this.$route.params.part,
         currentStep: parseInt(this.$route.params.no),
-        numberString: ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'],
+        numberString: ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'],
         title: '',
         description: '',
-        steps: [
-          { name: 'ASA physical status' },
-          { name: 'High alert condition' },
-          { name: 'Allergy' },
-          { name: 'Smoking' },
-          { name: 'Alcohol' },
-          { name: 'Confirm' }
-        ],
+        steps: [],
         patient: {
           hn: 100001
         }
