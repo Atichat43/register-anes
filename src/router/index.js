@@ -15,7 +15,7 @@ import PatientPre from '../components/patient-record/PatientPre'
 import PatientIntra from '../components/patient-record/PatientIntra'
 import PatientPost from '../components/patient-record/PatientPost'
 
-import CreatePhysicalInfo from '../components/patient-record/pre-sub-record/CreatePhysicalInfo'
+import CreatePreRecordLayout from '../components/patient-record/pre-sub-record/CreatePreRecordLayout'
 Vue.use(Router)
 
 export default new Router({
@@ -40,7 +40,7 @@ export default new Router({
         { path: '/patient',
           component: PatientCreateLayout,
           children: [
-            { path: ':hn/create/physicalInfo/step/:no', name: 'CreatePhysicalInfo', component: CreatePhysicalInfo, props: (to) => ({ hn: +to.params.hn, no: to.params.no }) }
+            { path: ':hn/create/pre-record/:part/step/:no', name: 'CreatePreRecord', component: CreatePreRecordLayout, props: (to) => ({ hn: +to.params.hn, no: to.params.no, part: +to.params.part }) }
           ]
         },
         {

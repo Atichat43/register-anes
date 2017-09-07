@@ -5,7 +5,7 @@
       tbody
         tr(v-for="(value, key, index) in values")
           td(class="five wide") {{ table.head[index] }}
-          td {{ value | tableValue | asaValue}}
+          td {{ value | tableValue(endValue) }}
 </template>
 
 <style scoped>
@@ -19,6 +19,17 @@
     props: {
       table: Object,
       values: Object
+    },
+    data () {
+      return {
+        endValue: 'endValue',
+        filters: 'asaValue'
+      }
+    },
+    computed: {
+      getFilter () {
+        return this.filters
+      }
     }
   }
 </script>

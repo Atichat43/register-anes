@@ -1,6 +1,7 @@
 import Vue from 'vue'
 
-Vue.filter('tableValue', (object) => {
+Vue.filter('tableValue', function (object, endValue) {
+  console.log(endValue)
   if (object.value === undefined) return object
   if (!object.value) return '-'
   return object.text

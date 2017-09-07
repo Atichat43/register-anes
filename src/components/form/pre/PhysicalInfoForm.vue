@@ -75,14 +75,8 @@
 </template>
 
 <script>
-  import radio from '../../shared/Radio'
-  import BasicTable from '../../shared/basicTable.vue'
   export default {
     name: 'CreatePhysicalInfo',
-    components: {
-      BasicTable,
-      radio
-    },
     data () {
       return {
         currentStep: 1,
