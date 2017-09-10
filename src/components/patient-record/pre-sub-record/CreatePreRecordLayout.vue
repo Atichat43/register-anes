@@ -63,7 +63,6 @@
       ExaminationMoreForm
     },
     mounted () {
-      console.log(getConfig('doctor'))
       var temp = getConfig(this.$route.params.part)
       this.title = temp.title
       this.steps = temp.head

@@ -41,7 +41,7 @@
           input(v-model="smokingDuration.amount", v-mask="'##'", placeholder="ม้วน/วัน")
         .field
           label สูบมาเป็น เวลานานกี่ เดือน, ปี
-          select.ui.dropdown(v-model="smokingDuration.monthYear")
+          select.ui.dropdown(ref="selectDropdownRef", v-model="smokingDuration.monthYear")
             option(value='') ระบุ เดือน/ปี
             option(value='1') Month
             option(value='12') Year
@@ -51,7 +51,7 @@
       .field(:class="smokingValue? '':'disabled'")
         label หยุดสูบมาเป็นเวลา
         .field
-          select.ui.dropdown(v-model="smokingDuration.stoppedMonthYear")
+          select.ui.dropdown(ref="selectDropdownRef2", v-model="smokingDuration.stoppedMonthYear")
             option(value='') ระบุ วัน/เดือน/ปี
             option(value='0') Day
             option(value='1') Month
@@ -75,15 +75,13 @@
 </template>
 
 <script>
+  import { getConfig } from './config'
   export default {
     name: 'CreatePhysicalInfo',
     data () {
       return {
         currentStep: 1,
-        table: {
-          title: 'Review Data',
-          head: ['ASA level', 'High Alert Condition', 'Allergy', 'Smoking', 'Alcohol']
-        },
+        table: getConfig(this.$route.params.part),
         smokingDuration: {
           amount: '',
           times: '',
@@ -123,11 +121,22 @@
         return this.currentStep
       },
       allergyValue () {
-        if (!this.patient.allergy.value) { this.patient.allergy.symptom = '' }
+        if (!this.patient.allergy.value) { this.patient.allergy.text = '' }
         return this.patient.allergy.value
       },
       smokingValue () {
-        if (!this.patient.smoking.duration) { this.patient.smoking.duration = '' }
+        if (this.patient.smoking.value === false) {
+          this.smokingDuration = {
+            amount: '',
+            times: '',
+            monthYear: '',
+            stoppedAmount: '',
+            stoppedMonthYear: ''
+          }
+          this.patient.smoking.text = ''
+          $(this.$refs.selectDropdownRef).dropdown('clear')
+          $(this.$refs.selectDropdownRef2).dropdown('clear')
+        }
         return this.patient.smoking.value
       },
       getSmokingDuration () {
@@ -136,7 +145,7 @@
         return this.patient.smoking.duration
       },
       alcoholValue () {
-        if (!this.patient.alcohol.value) { this.patient.alcohol.note = '' }
+        if (!this.patient.alcohol.value) { this.patient.alcohol.text = '' }
         return this.patient.alcohol.value
       }
     }
