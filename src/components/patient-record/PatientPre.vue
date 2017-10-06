@@ -16,7 +16,7 @@
 </style>
 
 <script>
-  import { getConfig } from '../form/pre/config'
+  import { getConfig } from '../form/pre/config_pre'
   export default {
     name: 'PatientPre',
     data () {

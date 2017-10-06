@@ -2,7 +2,7 @@
   .ui.big.form
     // Step 1 --------------------------------------------------------------------
     .field(v-show="getCurrentStep === 1")
-      h2 First
+      h2 physical
     // Step 1 --------------------------------------------------------------------
     .field(v-show="getCurrentStep === 2")
       h2 Second
@@ -16,7 +16,7 @@
 
 
 <script>
-  import { getConfig } from './config'
+  import { getConfig } from './config_pre'
   export default {
     name: 'ExaminationForm',
     data () {

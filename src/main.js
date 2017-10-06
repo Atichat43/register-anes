@@ -14,6 +14,7 @@ import Radio from './components/shared/Radio'
 import BasicTable from './components/shared/basicTable'
 import ReviewTable from './components/shared/reviewTable'
 import NotFound from './components/shared/notFound'
+import YesNoRadio from './components/shared/YesNoRadio'
 
 Vue.config.productionTip = false
 Vue.use(VueMask)
@@ -25,6 +26,7 @@ Vue.component('basic-table', BasicTable)
 Vue.component('review-table', ReviewTable)
 Vue.component('radio', Radio)
 Vue.component('not-found', NotFound)
+Vue.component('yes-no-radio', YesNoRadio)
 
 var config = {
   apiKey: 'AIzaSyBBqyPw0p6gmq7T8rXVhCWjKbF6bJaTPEU',

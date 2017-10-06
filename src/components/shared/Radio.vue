@@ -19,9 +19,6 @@
       value: [String, Number, Boolean],
       selectedValue: [String, Number, Boolean]
     },
-    update () {
-      console.log('sadas')
-    },
     mounted () {
       $(this.$el).checkbox({
         onChecked: () => {

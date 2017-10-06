@@ -12,18 +12,14 @@
         .content
           .title {{ step }}
     .ui.segment
-      physical-info-form(v-if="part === 'physicalInfo'")
-      information-form(v-else-if="part === 'information'")
-      planning-form(v-else-if="part === 'planning'")
-      laboratory-form(v-else-if="part === 'laboratory'")
-      investigation-form(v-else-if="part === 'investigation'")
-      discussion-form(v-else-if="part === 'discussion'")
-      examination-form(v-else-if="part === 'examination'")
-      examination-more-form(v-else-if="part === 'examinationMore'")
+      surgeon-form(v-if="part === 'surgeon'")
+      agents-form(v-else-if="part === 'agents'")
+      technique-form(v-else-if="part === 'technique'")
+      post-form(v-else-if="part === 'post'")
       not-found(v-else)
     .ui.hidden.divider
       .ui.primary.right.floated.button(v-if="this.$route.params.no < steps.length", @click="nextStep") next
-      .ui.green.right.floated.button(v-else, @click="confirm") confirm
+      .ui.green.right.floated.button(v-else, @cick="confirm") confirm
 </template>
 
 <style scoped>
@@ -41,26 +37,18 @@
 </style>
 
 <script>
-  import { getConfig } from '../../form/pre/config_pre'
-  import PhysicalInfoForm from '../../form/pre/PhysicalInfoForm'
-  import InformationForm from '../../form/pre/InformationForm'
-  import PlanningForm from '../../form/pre/PlanningForm'
-  import LaboratoryForm from '../../form/pre/LaboratoryForm'
-  import InvestigationForm from '../../form/pre/InvestigationForm'
-  import DiscussionForm from '../../form/pre/DiscussionForm'
-  import ExaminationForm from '../../form/pre/ExaminationForm'
-  import ExaminationMoreForm from '../../form/pre/ExaminationMoreForm'
+  import { getConfig } from '../../form/intra/config_intra'
+  import SurgeonForm from '../../form/intra/SurgeonForm'
+  import AgentsForm from '../../form/intra/AgentsForm'
+  import TechniqueForm from '../../form/intra/TechniqueForm'
+  import PostForm from '../../form/intra/PostForm'
   export default {
-    name: 'CreatePreRecordLayout',
+    name: 'CreateIntraRecordLayout',
     components: {
-      PhysicalInfoForm,
-      InformationForm,
-      PlanningForm,
-      LaboratoryForm,
-      InvestigationForm,
-      DiscussionForm,
-      ExaminationForm,
-      ExaminationMoreForm
+      SurgeonForm,
+      AgentsForm,
+      TechniqueForm,
+      PostForm
     },
     mounted () {
       var temp = getConfig(this.$route.params.part)

@@ -75,7 +75,7 @@
 </template>
 
 <script>
-  import { getConfig } from './config'
+  import { getConfig } from './config_pre'
   export default {
     name: 'CreatePhysicalInfo',
     data () {
