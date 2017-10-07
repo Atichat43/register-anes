@@ -13,10 +13,13 @@
         .item.red(data-value='TIVA', data-text='G GA/ TIVA due to RA wear off') GA/ TIVA due to RA wear off
         .item.red(data-value='TIVA', data-text='G GA/ TIVA due to RA high/total block') GA/ TIVA due to RA high/total block
         .header.green R Regional Anesthesia
-        .item.green(data-value='OET', data-text='R option 1') R1
-        .item.green(data-value='return', data-text='R option 1') RRR
-        .item.green(data-value='return', data-text='R option 1') RRRRR
-        .item.green(data-value='return', data-text='R option 1') QQQQQ
+        .header.small RS Spinal anesthesia
+        .item.green(data-value='SB', data-text='RS Spinal Block') Spinal Block
+        .item.green(data-value='SB Add narcotic', data-text='RS Spinal Narcotic') Spinal narcotic
+        .divider
+        .header.small RE Epidural anesthesia
+        .item.green(data-value='EB', data-text='RE Epidural Block') Epidural Block
+        .item.green(data-value='return', data-text='R option 1') QQQQQe
         .header.blue P PNB
         .item.blue(data-value='Angle NB', data-text='P Angle block') Angle Block
         .item.blue(data-value='Digitaial NB', data-text='P Digitial Nerve Block') Digitial Nerve Block
@@ -36,11 +39,19 @@
 </template>
 
 <style scoped>
+  .ui.dropdown .menu>.divider {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
   .ui.dropdown .menu>.header {
     font-size: 1em;
     margin: 0rem;
     padding: 1rem;
     color: whitesmoke;
+  }
+  .ui.dropdown .menu>.header.small {
+    font-size: 0.75em;
+    color: black;
   }
   .ui.dropdown .menu>.item.green {
     color: darkgreen;
