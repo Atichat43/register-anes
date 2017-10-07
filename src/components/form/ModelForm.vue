@@ -28,10 +28,23 @@
       textarea(rows="2", v-model="patient.othersInvestigation")
 
     .field(v-show="getCurrentStep === 5")
+      // text right align
       h3(style="text-align: right;") total
         span(v-if="patient.operation.anesTeam.length === 0", style="color:red; padding-right:5px; padding-left:5px;") {{ patient.operation.anesTeam.length }}
         span(v-else, style="color:blue; padding-right:5px; padding-left:5px;") {{ patient.operation.anesTeam.length }}
         span people
+      // search selection
+      h4 Example for optgroup view
+        .ui.search.selection.dropdown(ref="airway")
+          .text Select
+          i.dropdown.icon
+          .menu
+            .header Optgroup 1
+            .item(data-value='option1') Option 1
+            .item(data-value='option2') Option 2
+            .header Optgroup 2
+            .item(data-value='option3') Option 3
+            .item(data-value='option4') Option 4
 
     .field(v-show="getCurrentStep === 6")
       review-table(:table="table", :values="patient")

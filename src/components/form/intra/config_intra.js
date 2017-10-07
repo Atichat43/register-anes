@@ -11,7 +11,7 @@ export const getConfig = (part) => ({
   },
   'technique': {
     title: 'Anesthesia Technique',
-    head: ['Technique', 'Airway management', 'Combined Technique']
+    head: ['Anesthesia Technique', 'Airway management']
   },
   'post': {
     title: 'Post',

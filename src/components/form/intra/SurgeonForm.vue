@@ -61,7 +61,6 @@
     },
     mounted () {
       $('select.dropdown').dropdown()
-      console.log(this.anesTeam)
     },
     computed: {
       getCurrentStep () {
